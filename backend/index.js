@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express();
 const {connectdb} = require("./lib/db")
+const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -9,6 +10,9 @@ const PORT = process.env.PORT;
 const authRoute = require("./routes/auth.route");
 
 app.use(express.json());
+app.use(cookieParser);
+
+//Mounting
 app.use("/api/auth", authRoute);
 
 app.get("/", (req, res)=>{

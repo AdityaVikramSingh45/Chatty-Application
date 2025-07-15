@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 exports.generateToken = (userId, res)=>{
-    // { userId } is the payload (Object and hence {userId} and npt just userId)
+    // { userId } is the payload (Object and hence {userId} and not just userId)
     const token = jwt.sign({userId}, process.env.JWT_SECRET, {expiresIn: "7d"}) 
 
     // This stores the JWT in a cookie called "jwt" on the client side (browser).
