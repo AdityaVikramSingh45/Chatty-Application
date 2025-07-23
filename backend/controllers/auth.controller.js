@@ -4,6 +4,7 @@ const { generateToken } = require("../utils");
 const cloudinary = require("../lib/cloudinary")
 
 exports.signup = async(req, res)=>{
+    console.log("inside signup")
    const {fullName, email ,password} = req.body;
    try{
 
@@ -170,6 +171,8 @@ exports.updateProfile = async(req, res)=>{
 }
 
 exports.checkAuth = (req, res)=>{
+    console.log("inside checkAuth")
+    console.log("req.user", req.user)
     try{
         return res.status(200).json(req.user);
     }

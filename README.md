@@ -1,4 +1,4 @@
-# ✨ Full Stack Realtime Chat App 
+# Full Stack Realtime Chat App(CHATTY)✨
 
 ![Demo App](/frontend/public/screenshot-for-readme.png)
 
@@ -16,8 +16,8 @@ Highlights:
 ### Setup .env file
 
 ```js
-MONGODB_URI=...
-PORT=5001
+MONGODB_URL=...
+PORT=4000
 JWT_SECRET=...
 
 CLOUDINARY_CLOUD_NAME=...
@@ -26,4 +26,3 @@ CLOUDINARY_API_SECRET=...
 
 NODE_ENV=development
 ```
-
