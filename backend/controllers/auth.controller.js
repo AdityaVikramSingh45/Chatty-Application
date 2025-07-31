@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs");
 const { generateToken } = require("../utils");
 const cloudinary = require("../lib/cloudinary")
 
+
+//controllers.js
 exports.signup = async(req, res)=>{
     console.log("inside signup")
    const {fullName, email ,password} = req.body;
