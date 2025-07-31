@@ -50,7 +50,7 @@ const Sidebar = () => {
            key={user?._id}
            onClick={() => setSelectedUser(user)}
            className={
-            `w-full flex items-center gap-3 lg:m-4 hover:bg-base-300 transition-colors ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}`
+            `w-full flex items-center gap-3 lg:m-4 hover:bg-base-300 transition-colors sm:p-3 lg:p-2 ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}`
            }
           >
 
