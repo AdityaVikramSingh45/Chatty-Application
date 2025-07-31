@@ -8,6 +8,6 @@ exports.connectdb = async()=>{
         console.log("Database connected successfully");
     }
     catch(error){
-        console.log("Error occured while connecting to db" );
+        console.log("Error occured while connecting to db" , error);
     }
 }

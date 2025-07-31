@@ -135,11 +135,13 @@ exports.logout = (req, res)=>{
 exports.updateProfile = async(req, res)=>{
     try{
         const {profilePic} = req.body;
+        // const {profilePic} = req.body;
         if(!profilePic){
             return res.status(400).json({
                 message: "Profile pic not found"
             })
         }
+        // console.log("Before userId", profilePic)
 
         const userId = req.user?._id;
         if(!userId){
@@ -147,8 +149,9 @@ exports.updateProfile = async(req, res)=>{
                 message: "UserId not found"
             })
         }
-
+        // console.log("req.user", req.user)
         const uploadResponse = await cloudinary.uploader.upload(profilePic);
+        console.log("uploadResponse", uploadResponse)
         if (!uploadResponse || !uploadResponse.secure_url) {
             return res.status(400).json({
                 success: false,
@@ -157,6 +160,7 @@ exports.updateProfile = async(req, res)=>{
         }
 
         const updatedUser = await User.findByIdAndUpdate(userId, {profilePic: uploadResponse.secure_url}, {new: true});
+        // console.log("updatedUser", updatedUser)
 
         return res.status(200).json(updatedUser)
 
@@ -171,8 +175,6 @@ exports.updateProfile = async(req, res)=>{
 }
 
 exports.checkAuth = (req, res)=>{
-    console.log("inside checkAuth")
-    console.log("req.user", req.user)
     try{
         return res.status(200).json(req.user);
     }

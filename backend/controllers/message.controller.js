@@ -1,8 +1,9 @@
 const Message = require("../models/message.model");
 const User = require("../models/user.model")
-const Cloudinary = require("../lib/cloudinary")
+const Cloudinary = require("../lib/cloudinary");
+const { getReceiverSocketId, io } = require("../lib/socket");
 
-exports.getUserForSidebar = async(req, res)=>{
+exports.getUsersForSidebar = async(req, res)=>{
     try{
         const loggedInUserId = req.user._id;
         const filteredUsers = await User.find({_id: {$ne: loggedInUserId}}).select("-password");
@@ -51,7 +52,7 @@ exports.sendMessage = async(req, res)=>{
         if(image){
             //upload the image to cloudinary
             const uploadResponse = await Cloudinary.uploader.upload(image);
-            const imageUrl = uploadResponse.secure_url;
+            imageUrl = uploadResponse.secure_url;
         }
 
         // const newMessage = await Message.create({
@@ -68,9 +69,15 @@ exports.sendMessage = async(req, res)=>{
             image: imageUrl
         })
 
-        await newMessage.save()
+        const message = await newMessage.save()
+        console.log("message", message);
 
-        //todo: realtime functionality goes here ==> socket.io
+        //realtime chatting functionality goes here ==> socket.io
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if(receiverSocketId){
+            io.to(receiverSocketId).emit("newMessage", newMessage);
+        }
+
 
         res.status(200).json(newMessage)
     }

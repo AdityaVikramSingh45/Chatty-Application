@@ -49,8 +49,8 @@ const SignupPage = () => {
               >
                 <MessageSquare className="size-6 text-primary" />
               </div>
-              <h1 className='text-2xl font-bold mt-2'>Create Account</h1>
-              <p className='text-base-content/60'>Get Started with your free account</p>
+              <h1 className='text-3xl font-bold'>Create Account</h1>
+              <p className='text-base-content/60 '>Get Started with your free account</p>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ const SignupPage = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   className='w-full pl-10 py-2 rounded-md border border-base-600 bg-base-100 focus:outline-none focus:ring-2 focus:ring-primary text-base-content'
-                  placeholder='............'
+                  placeholder=' ............ '
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />

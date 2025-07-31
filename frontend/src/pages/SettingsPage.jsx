@@ -1,9 +1,9 @@
-import React from 'react'
-
 const SettingsPage = () => {
   return (
-    <div>SettingsPage</div>
-  )
-}
+    <div data-theme="cupcake" className="min-h-screen bg-base-100 flex items-center justify-center">
+      <button className="btn btn-primary">Click Me</button>
+    </div>
+  );
+};
 
-export default SettingsPage
+export default SettingsPage;
