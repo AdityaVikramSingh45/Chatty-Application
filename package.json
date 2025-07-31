@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/AdityaVikramSingh45/Chatty/issues"
   },
-  "homepage": "https://github.com/AdityaVikramSingh45/Chatty#readme"
+  "homepage": "https://github.com/AdityaVikramSingh45/Chatty#readme",
+  "dependencies": {
+    "path-to-regexp": "^5.0.0"
+  }
 }
