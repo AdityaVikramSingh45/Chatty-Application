@@ -12,11 +12,23 @@ const PORT = process.env.PORT;
 const authRoute = require("./routes/auth.route");
 const messageRoute = require("./routes/message.route");
 
-app.use(cors({
-    origin: 'http://localhost:5173', // React app's origin
-    credentials: true                // Allow cookies or auth headers if needed
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://chatty-application-6kms.onrender.com' 
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true
   }));
 
+  
 app.use(express.json({ limit: '100mb' }));
 app.use(cookieParser());
 
