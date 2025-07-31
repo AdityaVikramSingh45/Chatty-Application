@@ -108,7 +108,7 @@ const SignupPage = () => {
                   Loading...
                 </>
               ) : (
-                "Create Account"
+                "Sign in"
               )}
             </button>
           </form>
